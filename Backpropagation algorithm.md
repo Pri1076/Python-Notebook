@@ -43,7 +43,9 @@ for Z in range(len(NewX[0])):
      for S in range(len(Delta_hidden_layer[0])):
           NewX[Z][S]=sum(NewX[Z]*Delta_hidden_layer[:,Z])
           Wh=Wh+(NewX*Learning_rate)
-         
+          Vh=Bh.reshape(3,1)
+          Bh=Bh+(Bh.sum(axis=0)*Learning_rate)
+          bout=bout+(Delta_output.sum(axis=0)*Learning_rate)
          
         
 print("Hiddenlayer is",Hidden_layer_input)
@@ -57,6 +59,8 @@ print("Error at hidden layer is",Error_at_hidden_layer)
 print("Delta hidden layer is",Delta_hidden_layer)
 print("Updated Wout is",Wout)
 print("Updated Wh value is",Wh)
+print("Updated value of Bh",Bh)
+print("Updated value of bout",bout)
 ```
 
     Hiddenlayer is [[1.48 1.78 1.1 ]
@@ -85,4 +89,6 @@ print("Updated Wh value is",Wh)
      [0.1  0.73 1.18]
      [1.2  0.88 0.47]
      [0.92 1.01 1.42]]
+    Updated value of Bh [4.49388974 4.75388974 4.11388974]
+    Updated value of bout [0.61554888]
     
